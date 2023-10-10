@@ -1,6 +1,0 @@
-reference 1
-customer ref 0
-stage 10
-status 10
-Inv.date 5
-due.date 2

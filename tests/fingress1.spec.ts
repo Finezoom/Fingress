@@ -24,10 +24,7 @@ test("Ensuring the appropriate redirection of menu in Home",async()=>{
     await expect(page,"services").toHaveURL(`${baseUrl}fgPage/823b90c5-9fcc-4884-ae32-1c1d1c71270e/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
     await page.locator("(//span[@class='mat-button-wrapper'])[9]").click();//platform
     await expect(page,"platform").toHaveURL(`${baseUrl}page/7b99b2d8-6596-4740-8ac0-5816ddd0b76d/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
-    // await page.locator("(//span[@class='mat-button-wrapper'])[10]").click();//about us
-    // await expect(page,"about us").toHaveURL('${baseUrl}fgPage/d03ef631-7fa5-45f2-8a3b-dd0b560153f6/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4');
-    // await page.locator("(//span[@class='mat-button-wrapper'])[11]").click();//contact us
-    // await expect(page,"contact us").toHaveURL('${baseUrl}page/7b99b2d8-6596-4740-8ac0-5816ddd0b76d/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4');    
+    
 })
 test('Verify the pages are navigated with proper pagination in tabular view',async()=>{    
     await list.menu.click();

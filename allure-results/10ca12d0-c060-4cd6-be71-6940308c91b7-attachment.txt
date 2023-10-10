@@ -1,6 +1,0 @@
-month October 2023 February 2024 October 2023
-the month button is validated
-week Oct 1 – 7, 2023 Oct 29 – Nov 4, 2023 Oct 1 – 7, 2023
-the week button is validated
-day October 6, 2023 October 10, 2023 October 6, 2023
-the day button is validated
