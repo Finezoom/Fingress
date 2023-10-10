@@ -1,0 +1,27 @@
+ Reference #  INV20230819462909 
+ Invoice Number   
+ Total Invoice Amount  58,000.12 
+ Status Code  PENDING 
+ Organization  Esakki 
+ Customer Reference   
+ Invoice Date  Jun 5, 1987 
+ Due Date   
+ Name  Esakki 
+ GST   
+ Phone Number   
+ Email ID   
+ City   
+ Pin code   
+ Address   
+ Name   
+ GST   
+ Phone Number   
+ Email ID   
+ City   
+ Pin code   
+ Address   
+ State   
+ Name  Tamilnadu 
+ Notes   
+ Amount  58,000.12 
+ Invoice Amount  58000.12 

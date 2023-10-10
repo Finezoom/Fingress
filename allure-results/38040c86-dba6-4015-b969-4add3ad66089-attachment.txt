@@ -1,0 +1,6 @@
+reference 0
+customer ref 0
+stage 0
+status 0
+Inv.date 0
+due.date 0

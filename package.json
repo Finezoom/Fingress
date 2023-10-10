@@ -1,0 +1,29 @@
+{
+  "name": "fingressscripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test" : "C:/Users/david/Downloads/Mahesh/fingressScripts/tests/practice.spec.ts"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "allure-report",
+    "rimraf",
+    "lambdatest",
+    "allure-reporting",
+    "playwright-tests",
+    "lambdatest-playwright"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "^20.7.1",
+    "allure-commandline": "^2.24.0",
+    "allure-playwright": "^2.9.2",
+    "monocart-reporter": "^1.7.13"
+  }
+}

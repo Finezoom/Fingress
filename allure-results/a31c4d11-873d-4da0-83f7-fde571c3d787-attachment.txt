@@ -1,0 +1,27 @@
+ Reference #  INV20230906499765 
+ Invoice Number  TEST0005 
+ Total Invoice Amount  0.00 
+ Status Code  REJECTED 
+ Organization  360 Networks 
+ Customer Reference  24041311167000042529377.30 
+ Invoice Date  Sep 7, 2023 
+ Due Date  Sep 8, 2023 
+ Name  360 Networks 
+ GST   
+ Phone Number   
+ Email ID   
+ City  Chennai 
+ Pin code  600100 
+ Address  A1 
+ Name  Test01 
+ GST  00265356 
+ Phone Number   
+ Email ID   
+ City  Delhi 
+ Pin code  629401 
+ Address   
+ State  ASSAM 
+ Name  Assam 
+ Notes   
+ Amount  0.00 
+ Invoice Amount   
