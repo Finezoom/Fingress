@@ -8,7 +8,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
- */
+ */const date = new Date().toISOString().slice(0, 10); //2022-10-10
+const outputDir = `./test-results/${date}`;
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -20,14 +21,13 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter:  [
-    ['list'],
-    ['html'],
-    ['monocart-reporter', {
-    name: "My Test Report",
-    outputFile: './test-results/report.html'
-    }] ,['allure-playwright'],
-    ],
+  outputDir: outputDir,
+  reporter: [['list'],
+  ['html'],
+  ['monocart-reporter', {  
+    name: `My Test Report ${date}`,
+    outputFile: `${outputDir}/index.html`
+}] ,['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -36,10 +36,8 @@ export default defineConfig({
       width: 2400,
       height: 1600
     },   
-
     browserName: 'chromium',
     headless: false,  
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
     video:'on'
