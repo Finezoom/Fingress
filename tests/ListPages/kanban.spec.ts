@@ -1,4 +1,4 @@
-import {test,expect,chromium, Browser, BrowserContext, Page, Locator} from "@playwright/test";
+import {test,expect,chromium, Browser, BrowserContext, Page, Locator, selectors} from "@playwright/test";
 import EleListPages from "./POM/listpages.page";
 
 let browser : Browser;
@@ -13,7 +13,7 @@ let baseUrl = "http://192.168.1.49:8086/";
 
 
 test.beforeEach(async()=>{
-     browser = await chromium.launch();
+     browser = await chromium.launch({headless:false});
      context = await browser.newContext();
      page = await context.newPage();
      list = new EleListPages(page);
@@ -25,7 +25,7 @@ test.beforeEach(async()=>{
         await list.kanban.click();
      })     
 })
-test.afterAll(async()=>{
+test.afterEach(async()=>{
     await page.close();
     await browser.close();
 })
@@ -43,6 +43,7 @@ test('Validating the minimizing and  maximizing options in kanban',async()=>{
             await minimize[0].click();
         })
         await test.step('the minimized options should be in 50px size',async()=>{
+            //this locator is used to validate the minimized box of kanban
             if(i==countOfMinimize-1){ await expect(page.locator("div[style*='50px;']").nth(i-1)).toBeVisible();}
             else{await expect(page.locator("div[style*='50px;']").nth(i)).toBeVisible();}
         })        
@@ -60,38 +61,39 @@ test('Validating the minimizing and  maximizing options in kanban',async()=>{
     }
 })
 test('kanban - validating board options of Kanban',async()=>{   
+    selectors.setTestIdAttribute('class');
     await test.step('the chart in board should be visible',async()=>{
-        await expect(page.locator('svg[class="ngx-charts"]').nth(1)).toBeVisible();
+        await expect(page.getByTestId('gauge chart').nth(1)).toBeVisible();//[transform="rotate(240)"]
     })        
     await test.step('the kanban details should be visible',async()=>{
-        await expect(page.locator('span[class*="line-clamp1"]').nth(1)).toBeVisible(); 
+        await expect(page.locator('[class*="kanban-card"]').nth(1)).toBeVisible(); 
     })
     await test.step('clicking on the dashboard',async()=>{
         await page.locator('text="insert_chart"').click();
     })
     await test.step('show trend should be in hidden',async()=>{
-        expect(page.locator('svg[class="ngx-charts"]').nth(1)).not.toBeVisible();
+        expect(page.getByTestId('tree-map chart').nth(1)).not.toBeVisible();
     })   
     await test.step('clicking on the setting option',async()=>{
         await page.locator('text="settings"').click();
     })    
     await test.step('disabling the chart in board and kanban details, enabling the show trend',async()=>{
-        await page.locator("label[class='mat-slide-toggle-label']").nth(0).click();
-        await page.locator("label[class='mat-slide-toggle-label']").nth(1).click();
-        await page.locator("label[class='mat-slide-toggle-label']").nth(2).click();
+        await page.getByTestId('mat-slide-toggle-label').nth(0).click();
+        await page.getByTestId('mat-slide-toggle-label').nth(1).click();
+        await page.getByTestId('mat-slide-toggle-label').nth(2).click();
     })
     await test.step('clicking on the close option',async()=>{
         await page.locator('text="Close"').click();
     })
     await test.step('show trend should be visible in dashboard',async()=>{
-        await expect(page.locator('svg[class="ngx-charts"]').nth(1)).toBeVisible();
+        await expect(page.getByTestId('tree-map chart')).toBeVisible();
     })
     await test.step('clicking on the view column',async()=>{
         await page.locator('text="view_column"').click();
     })
     await test.step('chart in board and kanban details should be hidden in kanban page',async()=>{
-        await expect(page.locator('svg[class="ngx-charts"]').nth(1)).toBeHidden();
-        await expect(page.locator('span[class*="line-clamp1"]').nth(1)).toBeHidden(); 
+        await expect(page.getByTestId('gauge chart').nth(1)).toBeHidden();
+        await expect(page.locator('[class*="kanban-card"]').nth(1)).toBeHidden(); 
     })    
 })
 test('kanban - Validating board items in settings',async()=>{        
@@ -136,13 +138,11 @@ test('kanban - Validating options presents in Redirection page',async()=>{
     }) 
     await test.step('clicking the discard option',async()=>{
         await page.locator('text="Discard"').click();
-    })
-    
+    })    
     // await expect(page).toHaveURL(`${baseUrl}fgPage/7c33373a-c651-4579-a1f6-8d0bc948261c/44b4eb67-f5b8-482b-934f-a03d7f8796be`)
 })
 test("validating item per page in Kanban",async()=>{        
-    for(let i=0; i<4; i++){
-        
+    for(let i=0; i<4; i++){        
         await test.step('clicking the item per page',async()=>{
             await page.locator("div[class*='mat-select-arrow']").first().click();
         })
@@ -158,7 +158,7 @@ test("validating item per page in Kanban",async()=>{
         await page.locator('button[class*="fg-icon-btn"]').nth(4).waitFor({state:"visible"});
         await test.step('counting the items per page based on navigation options',async()=>{
             const no = await page.locator('button[class*="fg-icon-btn"]').all();
-            no1 = no.length/2; 
+            no1 = no.length; 
         })
         if(i==3){console.log(no1);break;}
         await test.step('validating the counting and selected count',async()=>{            

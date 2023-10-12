@@ -37,7 +37,7 @@ test("Ensuring the appropriate redirection of menu in Home",async()=>{
         await expect(page,"services").toHaveURL(`${baseUrl}fgPage/823b90c5-9fcc-4884-ae32-1c1d1c71270e/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
     })
     test.step('clicking the contact_us menu and validating the url navigation',async()=>{
-        await page.locator("text='   Contact Us '").click();//contact us
+        await page.locator("text='   Contact Us '").nth(0).click();//contact us
         await expect(page,"platform").toHaveURL(`${baseUrl}page/7b99b2d8-6596-4740-8ac0-5816ddd0b76d/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
     })   
 })
@@ -142,7 +142,7 @@ test('Verify the pages are navigated with proper pagination in tabular view',asy
            }
     })    
 })
-test.only('Validating 100 option item per page with pagination',async()=>{    
+test('Validating 100 option item per page with pagination',async()=>{    
     await test.step('Get into the Tabular page',async()=>{
         await list.menu.click();
         await list.explorer.click();

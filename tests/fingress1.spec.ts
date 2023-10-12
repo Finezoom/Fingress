@@ -52,7 +52,7 @@ test('Verify the pages are navigated with proper pagination in tabular view',asy
         console.log(text + " No.of invoice " +no2); 
     }}
 })
-test.only("Verify the records are filtered based on the valid input in tabular view",async()=>{    
+test("Verify the records are filtered based on the valid input in tabular view",async()=>{    
     await list.menu.click();
     await list.explorer.click();
     //await expect(page).toHaveURL(`${baseUrl}page/b6dfd566-f96b-4d19-a4b4-b1ea48779950/44b4eb67-f5b8-482b-934f-a03d7f8796be`);
@@ -138,6 +138,32 @@ test('Sorting of Amount in tabular view',async()=>{
     const amount2 = await page.locator("(//td[@role='cell'])[5]").textContent();
     expect(amount1).not.toBe(amount2);
     console.log(amount1,amount2);
+})
+test.only('validating browse file',async()=>{
+    await page.goto(baseUrl);
+    await list.menu.click();
+    await list.explorer.click();
+    await list.listPages.click();
+    await list.masterDetails.click();
+    await list.masterDetailsDashboard.click();
+    await page.locator('text="Browse"').click();
+    const fileChooserPromise = page.waitForEvent('filechooser');
+    await page.locator('text=" Choose "').click();
+    const fileChooser = await fileChooserPromise;    
+    await fileChooser.setFiles('Screenshot (3).png'); 
+    await expect(page.locator('div[class="mt-3"]').nth(0)).toBeVisible();
+    await page.locator('text=" Upload "').click();
+    await expect(page.locator('text=" Successfully uploaded"')).toBeVisible();
+    await page.locator('text="Browse"').click();
+    await page.locator("text='Cancel'").click();
+    await page.locator('text="Browse"').click();
+    await page.locator("text='close'").click();
+    await page.pause();
+    await page.locator('[aria-label="download"]').nth(0).click();
+    await page.locator('[aria-label="download"]').nth(1).click();
+    await expect(page.locator("//mat-icon[text()='delete']").nth(1)).toBeVisible(); 
+    await page.locator("//mat-icon[text()='delete']").click();
+    await expect(page.locator('text="Attachment removed Successfully"')).toBeVisible();
 })
 test('List expansion',async()=>{    
     await list.menu.click();
@@ -558,7 +584,7 @@ test('kanban - validating board options of Kanban',async()=>{
     await list.kanban.click();   
     await expect(page.locator('svg[class="ngx-charts"]').nth(1)).toBeVisible();
     await expect(page.locator('span[class*="line-clamp1"]').nth(1)).toBeVisible();    
-    await page.locator('text="insert_chart"').click();
+    await page.locator("text='Dashboard'").click();
     expect(page.locator('svg[class="ngx-charts"]').nth(1)).not.toBeVisible();
     await page.locator('text="settings"').click();
     await page.locator("label[class='mat-slide-toggle-label']").nth(0).click();
