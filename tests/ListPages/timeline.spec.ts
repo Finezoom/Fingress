@@ -12,7 +12,7 @@ let month :Locator[],monthBadge:string[];
 let baseUrl = "http://192.168.1.49:8086/";
 
 test.beforeAll(async()=>{
-     browser = await chromium.launch();
+     browser = await chromium.launch({headless:false});
      context = await browser.newContext();
      page = await context.newPage();
      list = new EleListPages(page);
@@ -66,7 +66,6 @@ test('Validating the monthly invoice count should be equal to the addition of in
         await page.getByTestId('timeline-month ng-star-inserted').nth(0).waitFor({state:"visible"});
         month = await page.getByTestId('timeline-month ng-star-inserted').all();
     })
-    await page.pause();
     await test.step('closing all the opened monthly files',async()=>{
         for(let k=0; k < month.length;k++){
             await month[k].click();
@@ -89,7 +88,7 @@ test('Validating the monthly invoice count should be equal to the addition of in
             }
         })
         await test.step('comparing the monthly count and total count',async()=>{
-            console.log("Addition of invoice files "+a+" : "+monthBadge[i]);
+            console.log("Addition of invoice files "+a+" : "+monthBadge[i],"monthly count");
             expect(a).toBe(Number(monthBadge[i]));
         })
         await test.step('closing the opened monthly file',async()=>{

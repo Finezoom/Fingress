@@ -1,0 +1,27 @@
+ Reference #  INV20230821463979 
+ Invoice Number  INV50967 
+ Total Invoice Amount  807,734.52 
+ Status Code  APPROVED 
+ Organization  Alexander Turner 
+ Customer Reference  CRN1000339 
+ Invoice Date  Aug 22, 2023 
+ Due Date  Jan 27, 2023 
+ Name  Alexander Turner 
+ GST   
+ Phone Number   
+ Email ID   
+ City   
+ Pin code   
+ Address   
+ Name  Olivia Lee 
+ GST   
+ Phone Number   
+ Email ID   
+ City   
+ Pin code   
+ Address   
+ State   
+ Name  Tamilnadu 
+ Grapes 
+ 20 
+ 10.00 

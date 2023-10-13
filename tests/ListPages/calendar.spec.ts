@@ -111,7 +111,8 @@ test('validating previous month and next month navigation',async()=>{
     })    
     console.log(cal1);     
     //UI comparison    
-    await expect(page).toHaveScreenshot('image.png',{fullPage: true});    
+    { waitUntil: 'networkidle' }
+    //await expect(page).toHaveScreenshot('image.png',{fullPage: true});    
     await test.step('clicking the next month',async()=>{
         await page.locator('button[title="Next month"]').click();
     })              

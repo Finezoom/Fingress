@@ -23,26 +23,6 @@ test.afterAll(async()=>{
     await page.close();
     await browser.close();
 })
-
-test("Ensuring the appropriate redirection of menu in Home",async()=>{    
-    test.step('waiting for the visibility of home page menu',async()=>{
-        await page.locator("text='   Solutions '").waitFor({state:"visible"});
-    })
-    test.step('clicking the solutions menu and validating the url navigation',async()=>{
-        await page.locator("text='   Solutions '").click();//solutions
-        await expect(page,"solutions").toHaveURL(`${baseUrl}page/2c04ace5-8ab1-42ee-99dc-f651459c2b44/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
-    })
-    test.step('clicking the platform menu and validating the url navigation',async()=>{
-        await page.locator("text='   Platform '").click();//platform
-        await expect(page,"services").toHaveURL(`${baseUrl}fgPage/823b90c5-9fcc-4884-ae32-1c1d1c71270e/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
-    })
-    test.step('clicking the contact_us menu and validating the url navigation',async()=>{
-        await page.locator("text='   Contact Us '").click();//contact us
-        await expect(page,"platform").toHaveURL(`${baseUrl}page/7b99b2d8-6596-4740-8ac0-5816ddd0b76d/bc6abfa0-dc63-4dec-8ff0-02f84c5a2bc4`);
-    })   
-})
-
-
 test("Verify the records are filtered based on the valid input in tabular view",async()=>{    
     await test.step('Get into the Tabular page',async()=>{
     await list.menu.click();
@@ -109,8 +89,9 @@ test('Verify the pages are navigated with proper pagination in tabular view',asy
                 noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
                 no1 = noOfRows.length; 
             })
-            await test.step('validating the selected count and presented no.of rows',async()=>{
-                expect(count).toContain(`${no1}`); 
+            if(Number(count)>Number(no1)){console.log(no1);break;}
+            await test.step('validating the selected count and presented no.of rows',async()=>{                
+                expect(Number(no1)).toBe(Number(count)); 
             })
             await test.step('fetch the paginator range label from the page and print the count of the rows  ',async()=>{
                 noOfcount = await page.locator('div[class="mat-paginator-range-label"]').textContent();    

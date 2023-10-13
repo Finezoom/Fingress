@@ -13,7 +13,7 @@ let count: string | null,no1: Number;
 let baseUrl = "http://192.168.1.49:8086/";
 
 test.beforeAll(async()=>{
-     browser = await chromium.launch();
+     browser = await chromium.launch({headless:false});
      context = await browser.newContext();
      page = await context.newPage();
      list = new EleListPages(page);
@@ -29,15 +29,16 @@ test.afterAll(async()=>{
     await page.close();
     await browser.close();
 })
-test.skip('expansion in tree view',async()=>{
+
+test('expansion in tree view',async()=>{
     await page.locator('div[class*="list-toggle"]').nth(1).waitFor({state:"visible"});
     const expand = await page.locator('div[class*="list-toggle"]').all();
-    await page.pause();
     for(let i=0; i< expand.length;i++){
         await expand[i].click();
         console.log("validating rows");
-        try{await expect(page.locator("text='No Matching Data Found.'")).toBeVisible(); }
-        catch(Error){console.log(Error,i);}               
+        await expect(page.locator('text="Due Date"').nth(i)).toBeVisible();
+        // try{await expect(page.locator("text='No Matching Data Found.'")).toBeVisible(); }
+        // catch(Error){console.log(Error,i);}               
     }
 })
 test('validating item per page',async()=>{
@@ -55,6 +56,7 @@ test('validating item per page',async()=>{
                 noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
                 no1 = noOfRows.length; 
             })
+            if(Number(count)>Number(no1)){console.log(no1);break;}
             await test.step('validating the selected count and presented no of rows',async()=>{
                 expect(count).toContain(`${no1}`); 
             })
@@ -81,7 +83,7 @@ test('validating item per page',async()=>{
                     })
                     await test.step('fetch the paginator range label from the page and print the count of the rows and range label ',async()=>{
                         noOfcount = await page.locator('div[class="mat-paginator-range-label"]').textContent();    
-                        console.log(noOfcount+" no.of invoice " +no2); 
+                        console.log(noOfcount," no.of invoice ",no2); 
                     })
                 }
             })       

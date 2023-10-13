@@ -93,7 +93,7 @@ test('kanban - validating board options of Kanban',async()=>{
     })
     await test.step('chart in board and kanban details should be hidden in kanban page',async()=>{
         await expect(page.getByTestId('gauge chart').nth(1)).toBeHidden();
-        await expect(page.locator('[class*="kanban-card"]').nth(1)).toBeHidden(); 
+        await expect(page.locator('span[class*="line-clamp1"]').nth(1)).toBeHidden(); 
     })    
 })
 test('kanban - Validating board items in settings',async()=>{        
