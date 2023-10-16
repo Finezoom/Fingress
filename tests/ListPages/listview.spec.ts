@@ -41,8 +41,7 @@ test('List expansion',async()=>{
         }
     })    
 })
-test('Filtering the records in List view',async()=>{    
-        
+test('Filtering the records in List view',async()=>{            
     await test.step('Identifying the applicable filters',async()=>{
         await page.locator('button[class*="btn-toggle"]').nth(1).waitFor({state:"visible"});
         filters = await page.locator('button[class*="btn-toggle"]').all();
@@ -84,7 +83,7 @@ test("Navigating between pages to find the records per page",async()=>{
     })
     await test.step('fetching number of the active page and getting count of rows',async()=>{
         activePage=await page.locator('li[class*="active"]').textContent();       
-        count1 = await page.locator('div[class*="list-toggle"]').allTextContents();
+        count1 = await page.locator('[class*="list-toggle"]').allTextContents();
         noOfRows = count1.length;
         console.log(no_of_page,activePage);       
     })    
@@ -111,8 +110,7 @@ test("Navigating between pages to find the records per page",async()=>{
         }
     })        
 })
-test('first & last visibility in List view pagination',async()=>{    
-    
+test('first & last visibility in List view pagination',async()=>{        
     await test.step('the first page & previous page links should be hidden in first page',async()=>{
         await expect(page.locator('text="First"')).toBeHidden();
         await expect(page.locator('li[title="Previous Page"]')).toBeHidden();
@@ -142,8 +140,7 @@ test('first & last visibility in List view pagination',async()=>{
         await expect(page.locator('li[title="Next Page"]')).toBeVisible();
     })        
 })
-test('Validating Next Page, Previous Page and Number page visibility', async()=>{
-    
+test('Validating Next Page, Previous Page and Number page visibility', async()=>{    
     await test.step('Verify that first five page links should be visible in the first page',async()=>{
         for(let i=0;i<5;i++){
             await expect(page.locator('li[class*="page-item pointer"]').nth(i)).toBeVisible();

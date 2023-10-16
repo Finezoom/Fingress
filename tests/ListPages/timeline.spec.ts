@@ -31,29 +31,30 @@ test.afterAll(async()=>{
 test('Validating the individual invoice count should be equal to the displayed invoice count',async()=>{
     selectors.setTestIdAttribute('class');
     await test.step('waiting for visibility of eye view and fetching all locators of eye view option',async()=>{
-        await page.getByTestId('fa fa-eye pl-2 ng-star-inserted').nth(0).waitFor({state:"visible"});
-        view = await page.getByTestId("fa fa-eye pl-2 ng-star-inserted").all();
+        await page.getByTestId('fa fa-eye pl-2 ng-star-inserted').nth(0).waitFor({state:"visible"}); 
+        view = await page.getByTestId("fa fa-eye pl-2 ng-star-inserted").all(); //[class*="fa-eye"]
     })
     await test.step('getting text of count badge of invoice files',async()=>{
-        countOfInvoice = await page.getByTestId('countBadge ng-star-inserted').allTextContents();
+        countOfInvoice = await page.getByTestId('countBadge ng-star-inserted').allTextContents();//[class*="countBadge"]
     })  
     for(let i=0;i<view.length;i++){
         await test.step('clicking the eye view option',async()=>{
             view[i].click();
         })
         await test.step('waiting for the visibility of invoice files and getting locators of reference id',async()=>{
-            await page.getByTestId('mat-cell cdk-cell cdk-column-REFERENCE_ID mat-column-REFERENCE_ID text-left ng-star-inserted').nth(0).waitFor({state:"visible"});
-            invoice = await page.getByTestId('mat-cell cdk-cell cdk-column-REFERENCE_ID mat-column-REFERENCE_ID text-left ng-star-inserted').all();
+            await page.getByRole('row').nth(0).waitFor({state:"visible"});
+            invoice = await page.getByRole('row').all();
         })
         await test.step('comparing the invoice count and displayed badge count',async()=>{
-            console.log("invoices count : "+invoice.length,"Displayed on file "+countOfInvoice[i]);
-            expect(invoice.length).toBe(Number(countOfInvoice[i]));
+            const fileCount = invoice.length - 1;
+            console.log("invoices count : "+fileCount,"Displayed on file "+countOfInvoice[i]);
+            expect(fileCount).toBe(Number(countOfInvoice[i]));
         })
         await test.step('checking the invoice files visibilty after clicking the eye view',async()=>{
-            await expect(page.getByTestId("container-fluid ng-star-inserted")).toBeVisible();
+            await expect(page.getByTestId("container-fluid ng-star-inserted")).toBeVisible(); //[class*="container-fluid"]
         })
         await test.step('closing the reference file',async()=>{
-            await page.getByTestId('fa fa-eye-slash pl-2 ng-star-inserted').click();
+            await page.getByTestId('fa fa-eye-slash pl-2 ng-star-inserted').click(); //[class*="fa-eye-slash"]
         })
         await test.step('after closing the files invoice files should be hidden',async()=>{
             await expect(page.getByTestId("container-fluid ng-star-inserted")).toBeHidden();
@@ -64,7 +65,7 @@ test('Validating the monthly invoice count should be equal to the addition of in
     selectors.setTestIdAttribute('class');
     await test.step('waiting for the visibilituy of monthly file & fetching the locators of month files',async()=>{
         await page.getByTestId('timeline-month ng-star-inserted').nth(0).waitFor({state:"visible"});
-        month = await page.getByTestId('timeline-month ng-star-inserted').all();
+        month = await page.getByTestId('timeline-month ng-star-inserted').all(); //[class*="timeline-month"]
     })
     await test.step('closing all the opened monthly files',async()=>{
         for(let k=0; k < month.length;k++){
@@ -72,7 +73,7 @@ test('Validating the monthly invoice count should be equal to the addition of in
         }
     })
     await test.step('fetching counts of all the monthly invoices',async()=>{
-        monthBadge=await page.getByTestId('badge timelinecount ng-star-inserted').allTextContents();
+        monthBadge=await page.getByTestId('badge timelinecount ng-star-inserted').allTextContents();//[class*=badge]
     })   
     for(let i=0; i< month.length;i++){
         let a=0;//used to add invoice counts
@@ -96,7 +97,7 @@ test('Validating the monthly invoice count should be equal to the addition of in
         })       
     }
 })
-test('validating sorting',async()=>{
+test('Verify the records are sorted',async()=>{
     selectors.setTestIdAttribute('class');
     await test.step('waiting for visibility of months and getting all months text',async()=>{
         await page.getByTestId('pr-1').nth(0).waitFor({state:"visible"});
@@ -111,7 +112,7 @@ test('validating sorting',async()=>{
         console.log(AscMonths);
     })   
 })
-test('validating the individual invoice count should be equal to the displayed invoice count in created on list',async()=>{
+test('Verify the individual invoice count should be equal to the displayed invoice count in created on list',async()=>{
     selectors.setTestIdAttribute('class');
     await test.step('clicking the more option',async()=>{
         await page.locator("text='more_vert'").click();
@@ -134,12 +135,13 @@ test('validating the individual invoice count should be equal to the displayed i
             view[i].click();
         })
         await test.step('waiting for the visibility of invoice files and getting locators of reference id',async()=>{
-            await page.getByTestId('mat-cell cdk-cell cdk-column-REFERENCE_ID mat-column-REFERENCE_ID text-left ng-star-inserted').nth(0).waitFor({state:"visible"});
-            invoice = await page.getByTestId('mat-cell cdk-cell cdk-column-REFERENCE_ID mat-column-REFERENCE_ID text-left ng-star-inserted').all();
+            await page.getByRole('row').nth(0).waitFor({state:"visible"});
+            invoice = await page.getByRole('row').all();
         })
         await test.step('comparing the invoice count and displayed badge count',async()=>{
-            console.log("invoices count : "+invoice.length,"Displayed on file "+countOfInvoice[i]);
-            expect(invoice.length).toBe(Number(countOfInvoice[i]));
+            const fileCount=invoice.length-1;
+            console.log("invoices count : "+fileCount,"Displayed on file "+countOfInvoice[i]);
+            expect(fileCount).toBe(Number(countOfInvoice[i]));
         })
         await test.step('checking the invoice files visibilty after clicking the eye view',async()=>{
             await expect(page.getByTestId("container-fluid ng-star-inserted")).toBeVisible();
@@ -183,7 +185,7 @@ test('Validating the monthly invoice count should be equal to the addition of in
             console.log("Addition of invoice files "+a+" : "+monthBadge[i]);
             expect(a).toBe(Number(monthBadge[i]));
         })
-        await test.step('closing the opened monthly file',async()=>{
+        await test.step('Close the selection for the month in timeline',async()=>{
             await month[i].click();
         })       
     }

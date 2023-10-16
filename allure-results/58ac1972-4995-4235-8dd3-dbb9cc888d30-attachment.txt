@@ -1,0 +1,27 @@
+ Reference #  INV20230819462794 
+ Invoice Number  INV62229 
+ Total Invoice Amount  2,096,877.71 
+ Status Code  NEW 
+ Organization  Charlotte Hernandez 
+ Customer Reference  CRN1000538 
+ Invoice Date  Jun 5, 1987 
+ Due Date  Jun 30, 2023 
+ Name  Charlotte Hernandez 
+ GST   
+ Phone Number   
+ Email ID   
+ City   
+ Pin code   
+ Address   
+ Name  Ethan Davis 
+ GST   
+ Phone Number   
+ Email ID   
+ City   
+ Pin code   
+ Address   
+ State   
+ Name  Tamilnadu 
+ Notes   
+ Amount  2,096,877.71 
+ Invoice Amount  2096877.71 

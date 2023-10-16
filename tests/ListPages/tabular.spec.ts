@@ -42,26 +42,25 @@ test("Verify the records are filtered based on the valid input in tabular view",
         for(let i=0; i<6; i++){       
             await test.step('selecting the filters one by one',async()=>{
                 console.log(i,inputs[i],filters[i]);
-                await page.locator("button[class*='btn-toggle mat-icon-button']").nth(i).click();
+                await page.locator("button[class*='btn-toggle']").nth(i).click();
             })            
             await test.step('dividing the filters based on the inputs',async()=>{
                 if(i==4 || i==5){await page.locator("//input[@type='date']").fill(inputs[i])}
-                else{await page.locator("div[class*='mat-form-field-infix']").nth(1).click();
-                await page.locator('input[class]').fill(inputs[i]); }   
+                else{ await page.locator('input[class]').fill(inputs[i]); }   
             })
             await test.step('Clicking on the search button',async()=>{
                 await page.locator('//span[text()="Search"]').click();
                 await page.waitForTimeout(2000);
             })
             await test.step('Print the filter name and count of the rows',async()=>{
-                noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
+                noOfRows = await page.locator('td[class*="cdk-column-REFERENCE_ID"]').allTextContents();
                 no1 = noOfRows.length;
                 console.log(filters[i],no1);
             })            
             await test.step('Clear the entered input from the filter ',async()=>{
-                await page.locator("button[class*='btn-toggle mat-icon-button']").nth(i).click();
+                await page.locator("button[class*='btn-toggle']").nth(i).click();
                 await page.locator('//span[text()="Clear"]').click();   
-                noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
+                noOfRows = await page.locator('td[class*="cdk-column-REFERENCE_ID"]').allTextContents();
                 no2 = noOfRows.length; 
                 // expect(no1).not.toBe(no2);      
             })           
@@ -81,8 +80,8 @@ test('Verify the pages are navigated with proper pagination in tabular view',asy
                 await page.locator("span[class='mat-option-text']").nth(i).click();
             })            
             await test.step('getting count of the rows presented in the page',async()=>{
-                await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').nth(i).waitFor({state:"visible"});
-                noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
+                await page.locator('td[class*="cdk-column-REFERENCE_ID"]').nth(i).waitFor({state:"visible"});
+                noOfRows = await page.locator('td[class*="cdk-column-REFERENCE_ID"]').allTextContents();
                 no1 = noOfRows.length; 
             })
             if(Number(count)>Number(no1)){console.log(no1);break;}
@@ -99,8 +98,8 @@ test('Verify the pages are navigated with proper pagination in tabular view',asy
                         await page.locator('button[class*="mat-paginator-navigation-next"]').click();
                     })
                     await test.step('getting count of the rows presented in the page',async()=>{
-                        await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').nth(i).waitFor({state:"visible"});
-                        noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
+                        await page.locator('td[class*="cdk-column-REFERENCE_ID"]').nth(i).waitFor({state:"visible"});
+                        noOfRows = await page.locator('td[class*="cdk-column-REFERENCE_ID"]').allTextContents();
                         no2 = noOfRows.length;    
                     })
                     if(no1>no2){
@@ -122,8 +121,8 @@ test('Verify the pages are navigated with proper pagination in tabular view',asy
 test('Validating 100 option item per page with pagination',async()=>{    
     
     await test.step('waiting for visiblity of rows and getting count of rows before selecting count in item per page ',async()=>{
-        await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').nth(1).waitFor({state:"visible"});
-        noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
+        await page.locator('td[class*="cdk-column-REFERENCE_ID"]').nth(1).waitFor({state:"visible"});
+        noOfRows = await page.locator('td[class*="cdk-column-REFERENCE_ID"]').allTextContents();
         no1 = noOfRows.length;  
     })
     await test.step('getting page range label',async()=>{
@@ -145,8 +144,8 @@ test('Validating 100 option item per page with pagination',async()=>{
                 await page.locator('button[class*="mat-paginator-navigation-next"]').click();
             })
             await test.step('waiting to visibile the rows and getting the count of the rows',async()=>{
-                await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').nth(1).waitFor({state:"visible"});
-                noOfRows = await page.locator('td[class*="cdk-cell cdk-column-REFERENCE_ID"]').allTextContents();
+                await page.locator('td[class*="column-REFERENCE_ID"]').nth(1).waitFor({state:"visible"});
+                noOfRows = await page.locator('td[class*="column-REFERENCE_ID"]').allTextContents();
                 no2 = noOfRows.length;
             })
             //compare the count of rows and selected count
