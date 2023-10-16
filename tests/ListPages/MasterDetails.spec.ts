@@ -74,9 +74,12 @@ test('Verify the operation of check boxes selection and search box in detail for
     await test.step('The child check box should be clicked',async()=>{
         await expect(page.locator('span[class*="mat-checkbox-inner-container"]').nth(1)).toBeChecked();
     })
-    await test.step('Unchecking the child check box',async()=>{
-        await page.locator('span[class*="mat-checkbox-inner-container"]').nth(1).click();
-    })
+    const checkBoxes=await page.locator('span[class*="mat-checkbox-inner-container"]').all();
+    for(let i=1; i<checkBoxes.length;i++){
+        await test.step('Unchecking the child check box',async()=>{
+            await page.locator('span[class*="mat-checkbox-inner-container"]').nth(i).click();
+        })
+    }    
     await test.step('The base checkbox should be unchecked',async()=>{
         await expect(page.locator('span[class*="mat-checkbox-inner-container"]').nth(0)).not.toBeChecked();
     })    
