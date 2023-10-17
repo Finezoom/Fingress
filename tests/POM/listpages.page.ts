@@ -17,6 +17,11 @@ export default class EleListPages{
         const list = this.page.locator("text='   List Pages   '");
         return list;
     }
+    public get Components(){
+        const components = this.page.locator("text='    Components   '");
+        return components;
+    }
+
     public get tabular(){
         const tab1 = this.page.locator('(//span[text()="Tabular"])[1]');
         return tab1;
@@ -50,7 +55,7 @@ export default class EleListPages{
         return tab6;
     }
     public get allListView(){
-        const tab7 = this.page.locator("text='All List Views'").nth(1);
+        const tab7 = this.page.locator("text='All List Views'").nth(0);
         return tab7;
     }
     public get allListViewTAB1(){
@@ -66,4 +71,9 @@ export default class EleListPages{
         const tab9 = this.page.locator("text='Tree View'");
         return tab9;
     }
+    public get Login(){
+        const tab3 = this.page.locator("text='Login'");
+        return tab3;
+    }
+
 }

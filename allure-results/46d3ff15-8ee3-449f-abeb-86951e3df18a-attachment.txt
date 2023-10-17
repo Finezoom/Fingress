@@ -1,0 +1,41 @@
+Horizontal
+Grouped Vertical
+Grouped Horizontal
+Stacked Vertical
+Stacked Horizontal
+Normalized Vertical
+Ge [Error]: expect(received).toBe(expected) // Object.is equality
+
+Expected: " Amount "
+Received: " Currency "
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\barCharts.spec.ts:135:74
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\barCharts.spec.ts:134:20 {
+  matcherResult: {
+    actual: ' Currency ',
+    expected: ' Amount ',
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+      '\n' +
+      'Expected: \x1B[32m" \x1B[7mAmount\x1B[27m "\x1B[39m\n' +
+      'Received: \x1B[31m" \x1B[7mCurrency\x1B[27m "\x1B[39m',
+    name: 'toBe',
+    pass: false
+  }
+} 6
+Normalized Horizontal
+Ge [Error]: expect(received).toBe(expected) // Object.is equality
+
+Expected: " Currency "
+Received: " Amount "
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\barCharts.spec.ts:136:39
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\barCharts.spec.ts:134:20 {
+  matcherResult: {
+    actual: ' Amount ',
+    expected: ' Currency ',
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n' +
+      '\n' +
+      'Expected: \x1B[32m" \x1B[7mCurrency\x1B[27m "\x1B[39m\n' +
+      'Received: \x1B[31m" \x1B[7mAmount\x1B[27m "\x1B[39m',
+    name: 'toBe',
+    pass: false
+  }
+} 7

@@ -161,7 +161,8 @@ test.only('validating browse file',async()=>{
     await page.pause();
     await page.locator('[aria-label="download"]').nth(0).click();
     await page.locator('[aria-label="download"]').nth(1).click();
-    await expect(page.locator("//mat-icon[text()='delete']").nth(1)).toBeVisible(); 
+    const deletes = await page.locator("//mat-icon[text()='delete']").all();
+    await expect(page.locator("//mat-icon[text()='delete']").nth(deletes.length-1)).toBeVisible(); 
     await page.locator("//mat-icon[text()='delete']").click();
     await expect(page.locator('text="Attachment removed Successfully"')).toBeVisible();
 })

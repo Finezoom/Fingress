@@ -21,14 +21,15 @@ test.afterAll(async()=>{
     await browser.close();
 })
 
-test('pie chart validation',async({page})=>{
+test('pie chart validation',async()=>{
     await list.menu.click();
     await list.explorer.click();
-    await list.listPages.click();
+   // await list.listPages.click();
     await page.locator('text="Dashboards"').click();
     await page.locator('text="Pie Charts"').click();
     const fields = await page.locator(".arc").all();
     for(let i=0;i<fields.length;i++){
+        await fields[i].waitFor({state:"visible"});
         await fields[i].hover();
     }
 })

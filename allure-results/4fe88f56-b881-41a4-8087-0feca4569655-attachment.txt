@@ -1,0 +1,39 @@
+Ge [Error]: expect(received).toContain(expected) // indexOf
+
+Expected substring: "Horizontal"
+Received string:    " Horizontral bar chart "
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\piecharts.spec.ts:36:33 {
+  matcherResult: {
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoContain\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // indexOf\x1B[22m\n' +
+      '\n' +
+      'Expected substring: \x1B[32m"Horizontal"\x1B[39m\n' +
+      'Received string:    \x1B[31m" Horizontral bar chart "\x1B[39m',
+    pass: false
+  }
+}
+Ge [Error]: expect(received).toContain(expected) // indexOf
+
+Expected substring: "Normalized Vertical"
+Received string:    " Stacked Horizontal bar chart "
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\piecharts.spec.ts:36:33 {
+  matcherResult: {
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoContain\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // indexOf\x1B[22m\n' +
+      '\n' +
+      'Expected substring: \x1B[32m"Normalized Vertical"\x1B[39m\n' +
+      'Received string:    \x1B[31m" Stacked Horizontal bar chart "\x1B[39m',
+    pass: false
+  }
+}
+Ge [Error]: expect(received).toContain(expected) // indexOf
+
+Expected substring: "Normalized Horizontal"
+Received string:    " Normalized Vertical bar chart "
+    at C:\Users\david\Downloads\Mahesh\fingressScripts\tests\dashboards\piecharts.spec.ts:36:33 {
+  matcherResult: {
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoContain\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // indexOf\x1B[22m\n' +
+      '\n' +
+      'Expected substring: \x1B[32m"Normalized Horizontal"\x1B[39m\n' +
+      'Received string:    \x1B[31m" Normalized Vertical bar chart "\x1B[39m',
+    pass: false
+  }
+}

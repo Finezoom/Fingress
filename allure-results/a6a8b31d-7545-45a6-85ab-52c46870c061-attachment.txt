@@ -1,0 +1,18 @@
+ 1 – 5 of 394  no.of invoice 5
+ 6 – 10 of 394  no.of invoice 5
+ 11 – 15 of 394  no.of invoice 5
+ 16 – 20 of 394  no.of invoice 5
+ 21 – 25 of 394  no.of invoice 5
+ 21 – 30 of 394  no.of invoice 10
+ 31 – 40 of 394  no.of invoice 10
+ 41 – 50 of 394  no.of invoice 10
+ 51 – 60 of 394  no.of invoice 10
+ 61 – 70 of 394  no.of invoice 10
+ 51 – 75 of 394  no.of invoice 25
+ 76 – 100 of 394  no.of invoice 25
+ 101 – 125 of 394  no.of invoice 25
+ 126 – 150 of 394  no.of invoice 25
+ 151 – 175 of 394  no.of invoice 25
+ 101 – 200 of 394  no.of invoice 100
+ 201 – 300 of 394  no.of invoice 100
+94  100 
