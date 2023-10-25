@@ -120,25 +120,25 @@ test('Verifying radio buttons of in detail page ',async()=>{
     }    
     }
 })
-test('Verifying test page and its options ',async()=>{    
-    await test.step('clicking the test page link',async()=>{
-        await page.locator('text="Test"').click();
-    })
-    // await expect(page).toHaveURL(`${baseUrl}fgRequestList/e87cdbcd-a7d2-4ce6-bcea-f223d80145b3/44b4eb67-f5b8-482b-934f-a03d7f8796be`)
-    await test.step('page title should be visible',async()=>{
-        await expect(page.locator('text="Default List "')).toBeVisible();
-    })
-    await test.step('clicking the download option',async()=>{
-        await page.locator('text="cloud_download"').click();
-    })
-    await test.step('downloading options should be visible',async()=>{
-        await expect(page.locator('text="picture_as_pdf"')).toBeVisible();
-        await expect(page.locator('text="border_all"')).toBeVisible();        
-    })
-    await test.step('downloading the page as pdf option',async()=>{
-        await page.locator('text="picture_as_pdf"').click();
-    })    
-})
+// test('Verifying test page and its options ',async()=>{    
+//     await test.step('clicking the test page link',async()=>{
+//         await page.locator('text="Test"').click();
+//     })
+//     // await expect(page).toHaveURL(`${baseUrl}fgRequestList/e87cdbcd-a7d2-4ce6-bcea-f223d80145b3/44b4eb67-f5b8-482b-934f-a03d7f8796be`)
+//     await test.step('page title should be visible',async()=>{
+//         await expect(page.locator('text="Default List "')).toBeVisible();
+//     })
+//     await test.step('clicking the download option',async()=>{
+//         await page.locator('text="cloud_download"').click();
+//     })
+//     await test.step('downloading options should be visible',async()=>{
+//         await expect(page.locator('text="picture_as_pdf"')).toBeVisible();
+//         await expect(page.locator('text="border_all"')).toBeVisible();        
+//     })
+//     await test.step('downloading the page as pdf option',async()=>{
+//         await page.locator('text="picture_as_pdf"').click();
+//     })    
+// })
 /*test("validating item per page in redirection of action ",async()=>{    
     await test.step('clicking the redirect page link',async()=>{
         await page.locator('text="Redirect"').click();

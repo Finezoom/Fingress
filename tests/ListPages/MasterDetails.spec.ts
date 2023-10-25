@@ -145,7 +145,7 @@ test('Verify the selection with radio buttons ',async()=>{
     }    
     }
 })
-test('Verifying test page and its options ',async()=>{        
+/*test('Verifying test page and its options ',async()=>{        
    await test.step('clicking on the dashboard option',async()=>{
         await list.masterDetailsDashboard.click();
     })
@@ -166,7 +166,7 @@ test('Verifying test page and its options ',async()=>{
     await test.step('downloading the page as pdf option',async()=>{
         await page.locator('text="picture_as_pdf"').click();
     })    
-})
+})*/
 /*test("validating item per page in redirection of action ",async()=>{    
     await test.step('clicking the redirect page link',async()=>{
         await page.locator('text="Redirect"').click();

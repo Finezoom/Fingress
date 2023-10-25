@@ -1,0 +1,12 @@
+0 INV20230518345473 reference
+reference 1
+1 rrr customer ref
+customer ref 1
+2 INITIATION stage
+stage 10
+3 NEW status
+status 10
+4 2023-08-03 Inv.date
+Inv.date 4
+5 2023-07-26 due.date
+due.date 2

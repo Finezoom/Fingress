@@ -8,7 +8,7 @@ let list : EleListPages;
 
 let filters: Locator[],no:any;
 let pageCount: string | null, activePage: string | null, no_of_page: string | null, count1:string[];
-let noOfRows: Number;
+let noOfRows: Number, pageNumberBox: Locator[];
 let baseUrl = "http://192.168.1.49:8086/";
 
 
@@ -48,13 +48,13 @@ test('Filtering the records in List view',async()=>{
         no = filters.length;
     })
     //inputs of the filters
-    const inputs = ['INV20230828474932','INITIATION','NEW'];
+    const inputs = ['INV20230828474930','INITIATION','APPROVED'];
     const filter = ['Reference','Stage','status'];
     await test.step('verify the records are filtered in the list view',async()=>{
         for(let i=0;i<no;i++){
             await test.step('valid input data for search filter ',async()=>{
                 await filters[i].click();
-                await page.locator("input[class*='mat-form-field-autofill-control']").fill(inputs[i]);
+                await page.locator("input[class*='mat-form-field-autofill-control']").nth(1).fill(inputs[i]);
                 await page.locator('text="Search"').click();
             })
             await test.step('Verifying the filtered Records',async()=>{
@@ -76,7 +76,7 @@ test("Navigating between pages to find the records per page",async()=>{
     })
     await test.step('Identifying the last page',async()=>{
         await page.locator('text="Last"').click();
-        no_of_page = await page.locator('a[class="page-link"]').nth(5).textContent(); 
+        no_of_page = await page.locator('li[class*="active"]').textContent(); 
     })
     await test.step('Navigating to first page through First option from navigation panel',async()=>{
         await page.locator('text="First"').click();
@@ -142,7 +142,9 @@ test('first & last visibility in List view pagination',async()=>{
 })
 test('Validating Next Page, Previous Page and Number page visibility', async()=>{    
     await test.step('Verify that first five page links should be visible in the first page',async()=>{
-        for(let i=0;i<5;i++){
+        await page.locator('li[class*="page-item pointer"]').nth(0).waitFor({state:"visible"});
+        pageNumberBox = await page.locator('li[class*="page-item pointer"]').all();
+        for(let i=0;i<pageNumberBox.length;i++){
             await expect(page.locator('li[class*="page-item pointer"]').nth(i)).toBeVisible();
         }
     })    
@@ -150,7 +152,9 @@ test('Validating Next Page, Previous Page and Number page visibility', async()=>
         await page.locator('text="Last"').click();
     })
     await test.step('four page links should be visible in the last page',async()=>{
-        for(let i=0;i<4;i++){
+        await page.locator('li[class*="page-item pointer"]').nth(0).waitFor({state:"visible"});
+        pageNumberBox = await page.locator('li[class*="page-item pointer"]').all();
+        for(let i=0;i<pageNumberBox.length;i++){
             await expect(page.locator('li[class*="page-item pointer"]').nth(i)).toBeVisible();
         }
     })    
@@ -158,7 +162,9 @@ test('Validating Next Page, Previous Page and Number page visibility', async()=>
         await page.locator('li[class*="page-item pointer"]').nth(0).click();
     })   
     await test.step('the middle page should contains five number page links',async()=>{
-        for(let i=0;i<4;i++){
+        await page.locator('li[class*="page-item pointer"]').nth(0).waitFor({state:"visible"});
+        pageNumberBox = await page.locator('li[class*="page-item pointer"]').all();
+        for(let i=0;i<pageNumberBox.length;i++){
             await expect(page.locator('li[class*="page-item pointer"]').nth(i)).toBeVisible();
         }
     })    

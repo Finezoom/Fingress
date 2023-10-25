@@ -1,10 +1,9 @@
 import {test, expect,Browser,BrowserContext,Page,chromium} from "@playwright/test";
-import EleListPages from "./POM/listpages.page";
-
+import EleComponents from "./POM/components.page";
 let browser : Browser;
 let context : BrowserContext;
 let page : Page;
-let list : EleListPages;
+let list : EleComponents;
 
 let baseUrl = "http://192.168.1.49:8086/";
 
@@ -12,7 +11,7 @@ test.beforeAll(async()=>{
      browser = await chromium.launch();
      context = await browser.newContext();
      page = await context.newPage();
-     list = new EleListPages(page);
+     list = new EleComponents(page);
      await page.goto(baseUrl);
      await test.step('Landed on the Login page from the home page',async()=>{
         await list.menu.click();

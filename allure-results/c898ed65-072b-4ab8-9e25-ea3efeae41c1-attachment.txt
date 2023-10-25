@@ -1,0 +1,8 @@
+invoices count : 2 Displayed on file 2
+invoices count : 24 Displayed on file 24
+invoices count : 12 Displayed on file 12
+invoices count : 6 Displayed on file 6
+invoices count : 1 Displayed on file 1
+invoices count : 1 Displayed on file 1
+invoices count : 1 Displayed on file 1
+invoices count : 3 Displayed on file 3

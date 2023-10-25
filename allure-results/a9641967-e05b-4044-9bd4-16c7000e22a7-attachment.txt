@@ -1,0 +1,27 @@
+ Reference #   INV20230819462792  
+ Invoice Number   INV79644  
+ Total Invoice Amount  1,896,669.47 
+ Status Code   APPROVED  
+ Organization   William Walker  
+ Customer Reference   CRN1000480  
+ Invoice Date  27-11-1998 05:30:00 
+ Due Date  Jul 10, 2023 
+ Created On  19-08-2023 15:27:55 
+ Name   William Walker  
+ GST     
+ Phone Number     
+ Email ID     
+ City     
+ Pin code     
+ Address     
+ Name   Elijah Harris  
+ GST     
+ Phone Number     
+ Email ID     
+ City     
+ Pin code     
+ Address     
+ State     
+ Name   Tamilnadu  
+ Notes     
+ Amount  1,896,669.47 

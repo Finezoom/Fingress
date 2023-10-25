@@ -67,12 +67,17 @@ test('Verifying the view chart, close chart in all tabs ',async()=>{
         })
         await test.step('Expanding the chart and checking the visibility of download and closing the chart',async()=>{
             await page.locator('[class="pull-right"]').click();
-            await expect(page.locator('text="Download"')).toBeVisible();
+        })
+            await test.step('wait for the visibility of chart and download',async()=>{
+                await page.locator('svg[width]').nth(1).waitFor({state:"visible"});
+                await expect(page.locator('text="Download"')).toBeVisible();
+            })            
             await test.step('downloading the chart',async()=>{
-                await page.locator('text="Download"').click();                
-            }) 
-            await page.locator('text="close"').click();
-        })  
+                await page.locator('text="Download"').click();                                
+            })            
+            await test.step('closing the chart',async()=>{
+                await page.locator('text="close"').click();
+            })           
         if(i==tabs.length-1){await page.pause();}      
     }
 })

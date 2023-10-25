@@ -1,5 +1,5 @@
 import {test,expect,Browser,BrowserContext,Page,chromium, Locator} from "@playwright/test";
-import EleDashboardPages from "./Dashboards.page";
+import EleDashboardPages from "./POM/Dashboards.page";
 
 let browser : Browser;
 let context : BrowserContext;
@@ -68,12 +68,17 @@ test('Verifying the expand and close options and check the visibility of downloa
         })
         await test.step('Expanding the chart and checking the visibility of download and closing the chart',async()=>{
             await page.locator('[class="pull-right"]').click();
-            await expect(page.locator('text="Download"')).toBeVisible();
+        })
+            await test.step('wait for the visibility of chart and download',async()=>{
+                await page.locator('svg[width]').nth(1).waitFor({state:"visible"});
+                await expect(page.locator('text="Download"')).toBeVisible();
+            })            
             await test.step('downloading the chart',async()=>{
-                await page.locator('text="Download"').click();                
-            }) 
-            await page.locator('text="close"').click();
-        })          
+                await page.locator('text="Download"').click();                                
+            })            
+            await test.step('closing the chart',async()=>{
+                await page.locator('text="close"').click();
+            })                   
         if(i==tabs.length-1){await page.pause();}
     }
 })

@@ -1,0 +1,5 @@
+4
+1 count 12
+2 count 12
+3 count 12
+4 count 4
